@@ -1,0 +1,53 @@
+<%= form_for(@tipo_vehiculo) do |f| %>
+  <% if @tipo_vehiculo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_vehiculo.errors.count, "error") %> prohibited this tipo_vehiculo from being saved:</h2>
+
+      <ul>
+      <% @tipo_vehiculo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :clase_vehiculo_id %><br>
+    <%= f.number_field :clase_vehiculo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :edad %><br>
+    <%= f.text_field :edad %>
+  </div>
+  <div class="field">
+    <%= f.label :tasa_comercial %><br>
+    <%= f.text_field :tasa_comercial %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_prima %><br>
+    <%= f.text_field :valor_prima %>
+  </div>
+  <div class="field">
+    <%= f.label :contribucion_fosyga %><br>
+    <%= f.text_field :contribucion_fosyga %>
+  </div>
+  <div class="field">
+    <%= f.label :subtotal %><br>
+    <%= f.text_field :subtotal %>
+  </div>
+  <div class="field">
+    <%= f.label :tasa_run %><br>
+    <%= f.text_field :tasa_run %>
+  </div>
+  <div class="field">
+    <%= f.label :total_pagar %><br>
+    <%= f.text_field :total_pagar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

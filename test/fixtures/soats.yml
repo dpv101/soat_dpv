@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  venta_id: 1
+  vehiculo_id: 1
+  fecha_ini: 2017-06-11 21:01:35
+  fecha_fin: 2017-06-11 21:01:35
+
+two:
+  venta_id: 1
+  vehiculo_id: 1
+  fecha_ini: 2017-06-11 21:01:35
+  fecha_fin: 2017-06-11 21:01:35

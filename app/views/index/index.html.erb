@@ -1,0 +1,138 @@
+<%= form_for(Soat.new) do |form| %>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-12 content-header">
+          <i class="glyphicon glyphicon-user"></i>Información del tomador
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 content-body">
+          <%= form.fields_for :cliente, :html => {:class => "form-horizontal form-enterprise"} do |f| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :tipo_documento %><br>
+                  <%= f.select :tipo_documento, [["CÉDULA", "CC"], ["CÉDULA EXTRANJERÍA", "CE"]], {:include_blank => false}, {class: "form-control", required: true} %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :numero_documento %><br>
+                  <%= f.text_field :numero_documento, class: "form-control", required: true %>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :nombres %><br>
+                  <%= f.text_field :nombres, class: "form-control", required: true %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :apellidos %><br>
+                  <%= f.text_field :apellidos, class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :email%><br>
+                  <%= f.email_field :email, class: "form-control", required: true %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :telefono %><br>
+                  <%= f.text_field :telefono, class: "form-control", required: true %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-12 content-header">
+          <i class="glyphicon glyphicon-bed"></i>Información del vehículo
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 content-body">
+          <%= form.fields_for :vehiculo, :html => {:class => "form-horizontal form-enterprise"} do |f| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :placa %><br>
+                  <%= f.text_field :placa, class: "form-control", required: true %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :edad, "Modelo" %><br>
+                  <%= f.text_field :edad, class: "form-control", required: true %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :clase_vehiculo_id %><br>
+                  <%= f.select :clase_vehiculo_id, ClaseVehiculo.all.order("nombre ASC").map{|c| [c.nombre, c.id]}, {}, {class: "form-control", required: true} %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :tipo_vehiculo_id %><br>
+                  <%= f.select :tipo_vehiculo_id, [], {}, {class: "form-control", required: true }%>
+                </div>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12 content-header">
+          <i class="glyphicon glyphicon-credit-card"></i>Información del pago
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 content-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="numero_tarjeta">Número de tarjeta</label>
+              <br>
+              <input name="numero_tarjeta" id="numero_tarjeta", required>
+            </div>
+            <div class="col-md-6">
+              <label for="nombre_titular">Nombre del titular</label>
+              <br>
+              <input name="nombre_titular" id="nombre_titular", required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="fecha_vecimiento">Fecha vencimiento</label>
+              <br>
+              <input type="date" name="fecha_vecimiento" id="fecha_vecimiento", required>
+            </div>
+            <div class="col-md-6">
+              <label for="cvv">CVV</label>
+              <br>
+              <input name="CVV" id="cvv", required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="cuotas">Numero cuotas</label>
+              <br>
+              <input name="cuotas" id="cuotas", required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center;">
+      <%= form.submit "Enviar", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

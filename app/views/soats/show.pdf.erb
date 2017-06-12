@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-12 content-header">
+        Resume de la compra
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 content-body">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th colspan="3">
+              Su soat estará vigente desde: <%= @soat.fecha_ini %> hasta: <%= @soat.fecha_fin %>
+            </th>
+          </tr>
+          <tr>
+            <td># Venta <%= @soat.venta.id %></td>
+            <td><span style="font-weight: bold;">Tomador</span> <%= @soat.venta.cliente.numero_documento %> - <%= @soat.venta.cliente.nombre_completo %></td>
+            <td>Placa <%= @soat.vehiculo.placa %></td>
+          </tr>
+          <tr>
+            <th colspan="2">Concepto</th>
+            <th>Valor</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td colspan="2">Tasa comercial</td>
+            <td><%= @soat.vehiculo.tipo_vehiculo.tasa_comercial %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Valor prima</td>
+            <td><%= @soat.vehiculo.tipo_vehiculo.valor_prima %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Contribución Fosyga</td>
+            <td><%= @soat.vehiculo.tipo_vehiculo.contribucion_fosyga %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Subtotal</td>
+            <td><%= @soat.vehiculo.tipo_vehiculo.subtotal %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Tasa RUN</td>
+            <td><%= @soat.vehiculo.tipo_vehiculo.tasa_run %></td>
+          </tr>
+          <tr>
+            <td colspan="2">Total Pagar</td>
+            <td><%= @soat.vehiculo.tipo_vehiculo.total_pagar %></td>
+          </tr>
+          <tr>
+            <td colspans = "2">
+              <span style="color: red;">Coberturas ofrecidas por el seguro así como el monto máximo que cubre cada una:</span>
+              <ul>
+                <li>Muerte y gastos funerarios: 750 SMLDV</li>
+                <li>Gastos médicos: 800 SMLDV</li>
+                <li>Incapacidad permanente: 180 SMLDV</li>
+                <li>Gastos de transporte: 10 SMLDV</li>
+              </ul>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+
+<style>
+  .content-header{
+    background-color: #eee;
+    font-weight: bold;
+    font-size: 14pt;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+    min-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #aaa;
+  }
+
+  .content-body{
+    border: 1px solid #aaa;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    padding-bottom: 10px;
+  }
+  table{
+    border: 1px;
+  }
+</style>

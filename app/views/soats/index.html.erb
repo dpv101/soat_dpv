@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Soats</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Venta</th>
+      <th>Vehiculo</th>
+      <th>Fecha ini</th>
+      <th>Fecha fin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @soats.each do |soat| %>
+      <tr>
+        <td><%= soat.venta_id %></td>
+        <td><%= soat.vehiculo_id %></td>
+        <td><%= soat.fecha_ini %></td>
+        <td><%= soat.fecha_fin %></td>
+        <td><%= link_to 'Show', soat %></td>
+        <td><%= link_to 'Edit', edit_soat_path(soat) %></td>
+        <td><%= link_to 'Destroy', soat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Soat', new_soat_path %>

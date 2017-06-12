@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vehiculos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Placa</th>
+      <th>Edad</th>
+      <th>Peso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehiculos.each do |vehiculo| %>
+      <tr>
+        <td><%= vehiculo.placa %></td>
+        <td><%= vehiculo.edad %></td>
+        <td><%= link_to 'Show', vehiculo %></td>
+        <td><%= link_to 'Edit', edit_vehiculo_path(vehiculo) %></td>
+        <td><%= link_to 'Destroy', vehiculo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehiculo', new_vehiculo_path %>

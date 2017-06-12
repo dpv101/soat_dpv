@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tipo Vehiculos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Clase vehiculo</th>
+      <th>Codigo</th>
+      <th>Edad</th>
+      <th>Tasa comercial</th>
+      <th>Valor prima</th>
+      <th>Contribucion fosyga</th>
+      <th>Subtotal</th>
+      <th>Tasa run</th>
+      <th>Total pagar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_vehiculos.each do |tipo_vehiculo| %>
+      <tr>
+        <td><%= tipo_vehiculo.clase_vehiculo_id %></td>
+        <td><%= tipo_vehiculo.codigo %></td>
+        <td><%= tipo_vehiculo.edad %></td>
+        <td><%= tipo_vehiculo.tasa_comercial %></td>
+        <td><%= tipo_vehiculo.valor_prima %></td>
+        <td><%= tipo_vehiculo.contribucion_fosyga %></td>
+        <td><%= tipo_vehiculo.subtotal %></td>
+        <td><%= tipo_vehiculo.tasa_run %></td>
+        <td><%= tipo_vehiculo.total_pagar %></td>
+        <td><%= link_to 'Show', tipo_vehiculo %></td>
+        <td><%= link_to 'Edit', edit_tipo_vehiculo_path(tipo_vehiculo) %></td>
+        <td><%= link_to 'Destroy', tipo_vehiculo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tipo vehiculo', new_tipo_vehiculo_path %>

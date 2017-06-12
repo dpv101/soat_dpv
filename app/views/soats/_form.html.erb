@@ -1,0 +1,175 @@
+<%= form_for(@soat) do |form| %>
+    <% if @cliente.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@cliente.errors.count, "error") %> No ha permitido que se cree el cliente:</h2>
+
+          <ul>
+            <% @cliente.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% if @vehiculo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@vehiculo.errors.count, "error") %> no ha permitido que se cree el vehiculo:</h2>
+
+          <ul>
+            <% @vehiculo.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% if @soat.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@soat.errors.count, "error") %> no ha permitido que se registre el soat:</h2>
+
+          <ul>
+            <% @soat.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-12 content-header">
+            <i class="glyphicon glyphicon-user"></i>Información del tomador
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 content-body">
+            <%= form.fields_for @cliente, :html => {:class => "form-horizontal form-enterprise"} do |f| %>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :tipo_documento %><br>
+                    <%= f.select :tipo_documento, [["CÉDULA", "CC"], ["CÉDULA EXTRANJERÍA", "CE"]], {:include_blank => false}, {class: "form-control", required: true} %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :numero_documento %><br>
+                    <%= f.text_field :numero_documento, class: "form-control", required: true %>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :nombres %><br>
+                    <%= f.text_field :nombres, class: "form-control", required: true %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :apellidos %><br>
+                    <%= f.text_field :apellidos, class: "form-control", required: true %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :email%><br>
+                    <%= f.email_field :email, class: "form-control", required: true %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :telefono %><br>
+                    <%= f.text_field :telefono, class: "form-control", required: true %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-12 content-header">
+            <i class="glyphicon glyphicon-bed"></i>Información del vehículo
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 content-body">
+            <%= form.fields_for @vehiculo, :html => {:class => "form-horizontal form-enterprise"} do |f| %>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :placa %><br>
+                    <%= f.text_field :placa, class: "form-control", required: true %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :edad, "Modelo" %><br>
+                    <%= f.text_field :edad, class: "form-control", required: true %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :clase_vehiculo_id %><br>
+                    <%= f.select :clase_vehiculo_id, ClaseVehiculo.all.order("nombre ASC").map{|c| [c.nombre, c.id]}, {}, {class: "form-control", required: true} %>
+                    <script>
+                        setTimeout('$("#soat_vehiculo_clase_vehiculo_id").change();', 500);
+                        setTimeout('$("#soat_vehiculo_tipo_vehiculo_id").val("<%= @vehiculo.tipo_vehiculo_id %>")', 1000);
+                    </script>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :tipo_vehiculo_id %><br>
+                    <%= f.select :tipo_vehiculo_id, [], {}, {class: "form-control", required: true }%>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 content-header">
+            <i class="glyphicon glyphicon-credit-card"></i>Información del pago
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 content-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="numero_tarjeta">Número de tarjeta</label>
+                <br>
+                <input value="<%= params[:numero_tarjeta]%>" name="numero_tarjeta" id="numero_tarjeta", required>
+              </div>
+              <div class="col-md-6">
+                <label for="nombre_titular">Nombre del titular</label>
+                <br>
+                <input value="<%= params[:nombre_titular]%>" name="nombre_titular" id="nombre_titular", required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="fecha_vecimiento">Fecha vencimiento</label>
+                <br>
+                <input value="<%= params[:fecha_vecimiento]%>" type="date" name="fecha_vecimiento" id="fecha_vecimiento", required>
+              </div>
+              <div class="col-md-6">
+                <label for="cvv">CVV</label>
+                <br>
+                <input value="<%= params[:CVV]%>" name="CVV" id="cvv", required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="cuotas">Numero cuotas</label>
+                <br>
+                <input value="<%= params[:cuotas]%>" name="cuotas" id="cuotas", required>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12" style="text-align: center;">
+        <%= form.submit "Enviar", class: "btn btn-success" %>
+      </div>
+    </div>
+<% end %>

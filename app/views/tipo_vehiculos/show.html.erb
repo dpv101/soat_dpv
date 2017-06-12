@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Clase vehiculo:</strong>
+  <%= @tipo_vehiculo.clase_vehiculo_id %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @tipo_vehiculo.codigo %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @tipo_vehiculo.edad %>
+</p>
+
+<p>
+  <strong>Tasa comercial:</strong>
+  <%= @tipo_vehiculo.tasa_comercial %>
+</p>
+
+<p>
+  <strong>Valor prima:</strong>
+  <%= @tipo_vehiculo.valor_prima %>
+</p>
+
+<p>
+  <strong>Contribucion fosyga:</strong>
+  <%= @tipo_vehiculo.contribucion_fosyga %>
+</p>
+
+<p>
+  <strong>Subtotal:</strong>
+  <%= @tipo_vehiculo.subtotal %>
+</p>
+
+<p>
+  <strong>Tasa run:</strong>
+  <%= @tipo_vehiculo.tasa_run %>
+</p>
+
+<p>
+  <strong>Total pagar:</strong>
+  <%= @tipo_vehiculo.total_pagar %>
+</p>
+
+<%= link_to 'Edit', edit_tipo_vehiculo_path(@tipo_vehiculo) %> |
+<%= link_to 'Back', tipo_vehiculos_path %>

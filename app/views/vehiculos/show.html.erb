@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Placa:</strong>
+  <%= @vehiculo.placa %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @vehiculo.edad %>
+</p>
+
+<%= @vehiculo.soat_active.count %>
+<%= "fecha_ini >=  '" + DateTime.now.strftime("%Y-%m-%d %H:%M:%S") + "' AND " + "fecha_fin <=  '" + (DateTime.now.to_datetime + 1.year - 1.second).strftime("%Y-%m-%d %H:%M:%S") + "'" %>
+<br>
+
+<%= link_to 'Edit', edit_vehiculo_path(@vehiculo) %> |
+<%= link_to 'Back', vehiculos_path %>

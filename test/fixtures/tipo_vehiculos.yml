@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clase_vehiculo_id: 1
+  codigo: MyString
+  edad: MyString
+  tasa_comercial: 
+  valor_prima: 
+  contribucion_fosyga: 
+  subtotal: 
+  tasa_run: 
+  total_pagar: 
+
+two:
+  clase_vehiculo_id: 1
+  codigo: MyString
+  edad: MyString
+  tasa_comercial: 
+  valor_prima: 
+  contribucion_fosyga: 
+  subtotal: 
+  tasa_run: 
+  total_pagar: 
