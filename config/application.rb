@@ -31,8 +31,8 @@ module SoatDpv
         port: 587,
         authentication: "plain",
         enable_starttls_auto: true,
-        user_name: "aseutp12",
-        password: "pulgarin3",
+        user_name: "username",
+        password: "password",
     }
 
   end

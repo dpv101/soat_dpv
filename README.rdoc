@@ -19,6 +19,15 @@ Para correr este aplicativo de manera local es necesario ejecutar desde la conso
     * rails s
 
 
+Para que funcione el envio de correo electrónico es necesario cambiar la siguiente linea dentro del archivo config/application.rb:
+    config.action_mailer.smtp_settings = {
+            address: "smtp.gmail.com",
+            port: 587,
+            authentication: "plain",
+            enable_starttls_auto: true,
+            user_name: "username",
+            password: "password",
+        }
 
 Desarrollado por:
     David Pulgarin Valencia
