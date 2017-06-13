@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   get '/vehiculos/placa/:placa', to: "vehiculos#search_vehiculo"
   get '/clase_vehiculos/:id/tipo_vehiculos/', to: "clase_vehiculos#get_tipo_vehiculos"
 
+  namespace :api do
+    namespace :v1 do
+      resources :vehiculos
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
